@@ -1,0 +1,7 @@
+type project
+id Aardvark.OpenImageDenoise
+authors Aardvark Community
+owners Aardvark Community
+description
+    Aardvark.OpenImageDenoise
+include-pdbs true

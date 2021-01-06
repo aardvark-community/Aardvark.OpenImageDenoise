@@ -1,0 +1,1 @@
+Aardvark PixImage bindings for the Intel Open Image Denoise library. See example code in [DenoiseTest](https://github.com/aardvark-community/Aardvark.OpenImageDenoise/tree/master/src/DenoiseTest) to get started.
