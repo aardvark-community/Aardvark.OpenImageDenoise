@@ -121,6 +121,7 @@ namespace Aardvark.OpenImageDenoise
         public void Dispose()
         {
             OidnAPI.oidnReleaseDevice(m_device);
+            m_device = IntPtr.Zero;
         }
     }
 }
