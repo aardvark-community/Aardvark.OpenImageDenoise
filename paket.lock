@@ -21,6 +21,10 @@ NUGET
       Aardvark.Base.FSharp (5.1.2)
       FSharp.Core (>= 4.6.2)
       SixLabors.ImageSharp (>= 1.0.2 < 1.1)
+    Aardvark.PixImage.DevIL (5.1.2)
+      Aardvark.Base (5.1.2)
+      Aardvark.Base.Tensors (5.1.2)
+      DevILSharp
   remote: https://api.nuget.org/v3/index.json
     Aardvark.Base.TypeProviders (4.5.15)
       FSharp.Core (>= 4.2.3)

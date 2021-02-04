@@ -5,6 +5,7 @@ source https://nuget.pkg.github.com/aardvark-platform/index.json
 
 nuget Aardvark.Base                ~> 5.1.2
 nuget Aardvark.Base.Tensors        ~> 5.1.2
+nuget Aardvark.PixImage.DevIL      ~> 5.1.2
 
 group Build
 framework: netstandard2.0

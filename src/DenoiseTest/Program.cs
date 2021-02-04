@@ -13,8 +13,8 @@ namespace DenoiseTest
             Aardvark.Base.Aardvark.Init(); // unpack native
 
             //Test();
-            //Batch();
-            Benchmark();
+            Batch();
+            //Benchmark();
         }
 
         static void Batch()
