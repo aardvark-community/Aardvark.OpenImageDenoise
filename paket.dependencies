@@ -1,10 +1,10 @@
 framework: netstandard2.0, netcoreapp3.1
 
-source https://vrvis.myget.org/F/aardvark_public/api/v3/index.json
-source https://vrvis.myget.org/F/aardvark/api/v3/index.json
 source https://api.nuget.org/v3/index.json
+source https://nuget.pkg.github.com/aardvark-platform/index.json
 
-nuget Aardvark.Base                ~> 5.0.0
+nuget Aardvark.Base                ~> 5.1.2
+nuget Aardvark.Base.Tensors        ~> 5.1.2
 
 group Build
 framework: netstandard2.0
