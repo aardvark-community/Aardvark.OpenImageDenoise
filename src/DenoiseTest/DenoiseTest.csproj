@@ -14,13 +14,10 @@
     <ProjectReference Include="..\Aardvark.OpenImageDenoise\Aardvark.OpenImageDenoise.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="..\..\lib\Native\Aardvark.OpenImageDenoise\windows\AMD64\OpenImageDenoise.dll">
+    <None Include="..\..\lib\Native\Aardvark.OpenImageDenoise\windows\AMD64\OpenImageDenoise.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="..\..\lib\Native\Aardvark.OpenImageDenoise\windows\AMD64\tbb.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="..\..\lib\Native\Aardvark.OpenImageDenoise\windows\AMD64\tbbmalloc.dll">
+    <None Include="..\..\lib\Native\Aardvark.OpenImageDenoise\windows\AMD64\tbb12.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

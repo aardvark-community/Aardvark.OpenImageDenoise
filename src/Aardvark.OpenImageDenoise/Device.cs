@@ -45,6 +45,19 @@ namespace Aardvark.OpenImageDenoise
             }
         }
 
+        public Version Version
+        {
+            get
+            {
+                // two decimal digits per component
+                var version = OidnAPI.oidnGetDevice1i(m_device, "version");
+                var major = version / 10000;
+                var minor = (version / 100) - major * 100;
+                var patch = version % 100;
+                return new Version(major, minor, patch);
+            }
+        }
+
         /// <summary>
         /// Result will always be 3-channel float image
         /// </summary>

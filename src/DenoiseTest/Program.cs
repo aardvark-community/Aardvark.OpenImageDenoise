@@ -21,6 +21,7 @@ namespace DenoiseTest
         {
             var device = new Device();
             Report.Line("Using {0} Threads", device.NumThreads);
+            Report.Line("OIDN Version: {0}", device.Version);
 
             var files = Directory.GetFiles("C:\\Debug", "*.exr");
 
