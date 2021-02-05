@@ -59,7 +59,7 @@ namespace DenoiseTest
             var img = img4Chan.ToPixImage<float>(Col.Format.RGB);
 
             Report.BeginTimed("Denoise");
-            var resultImg = device.Denoise(img);
+            var resultImg = device.Denoise(img, 10);
             Report.End();
 
             var outFile = Path.GetFileNameWithoutExtension(file) + "_dn.exr";

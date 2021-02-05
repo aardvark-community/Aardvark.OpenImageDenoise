@@ -60,27 +60,29 @@ namespace Aardvark.OpenImageDenoise
 
         /// <summary>
         /// Result will always be 3-channel float image
+        /// inputScale: a value of 1 should represent 100cd/m² -> inputScale can be used to setup this (NaN for auto calculation)
         /// </summary>
-        public PixImage<float> Denoise(PixImage<float> img)
+        public PixImage<float> Denoise(PixImage<float> img, float inputScale = float.NaN)
         {
             var output = new PixImage<float>(img.Size.X, img.Size.Y, 3);
-            Denoise(img, null, null, output);
+            Denoise(img, null, null, output, inputScale);
             return output;
         }
 
         /// <summary>
         /// Denoises the input image to the output image buffer
+        /// inputScale: a value of 1 should represent 100cd/m² -> inputScale can be used to setup this (NaN for auto calculation)
         /// </summary>
-        public void Denoise(PixImage<float> img, PixImage<float> outImage)
+        public void Denoise(PixImage<float> img, PixImage<float> outImage, float inputScale = float.NaN)
         {
             Denoise(img, null, null, outImage);
         }
 
         /// <summary>
         /// Denoises the input image with optinal albedo and normal images to the output image buffer
-        /// hdrScale: a value of 1 should represent 100cd/m² -> hdrScale can be used to setup this (NaN for auto calculation)
+        /// inputScale: a value of 1 should represent 100cd/m² -> inputScale can be used to setup this (NaN for auto calculation)
         /// </summary>
-        public void Denoise(PixImage<float> color, PixImage<float> albedo, PixImage<float> normal, PixImage<float> outImage, float hdrScale = float.NaN)
+        public void Denoise(PixImage<float> color, PixImage<float> albedo, PixImage<float> normal, PixImage<float> outImage, float inputScale = float.NaN)
         {
             if (color.ChannelCount < 3 || color.ChannelCount > 4) throw new ArgumentException("Image must have 3 or 4 channels");
             if (albedo != null && (albedo.ChannelCount < 3 || albedo.ChannelCount > 4)) throw new ArgumentException("Image must have 3 or 4 channels");
@@ -112,7 +114,7 @@ namespace Aardvark.OpenImageDenoise
             if (normal != null) OidnAPI.oidnSetSharedFilterImage(filter, "normal", normalPtr.AddrOfPinnedObject(), ImageFormat.Float3, width, height, 0, normalPixelStride, normalPixelStride * width);
             OidnAPI.oidnSetSharedFilterImage(filter, "output", outputPtr.AddrOfPinnedObject(), ImageFormat.Float3, width, height, 0, outPixelStride, outPixelStride * width);
             OidnAPI.oidnSetFilter1b(filter, "hdr", true); // image is HDR
-            if (!hdrScale.IsNaN()) OidnAPI.oidnSetFilter1f(filter, "hdrScale", hdrScale); // image is HDR
+            if (!inputScale.IsNaN()) OidnAPI.oidnSetFilter1f(filter, "inputScale", inputScale); // image is HDR
             OidnAPI.oidnCommitFilter(filter);
 
             // Filter the image
