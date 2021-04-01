@@ -114,7 +114,7 @@ namespace Aardvark.OpenImageDenoise
             if (normal != null) OidnAPI.oidnSetSharedFilterImage(filter, "normal", normalPtr.AddrOfPinnedObject(), ImageFormat.Float3, width, height, 0, normalPixelStride, normalPixelStride * width);
             OidnAPI.oidnSetSharedFilterImage(filter, "output", outputPtr.AddrOfPinnedObject(), ImageFormat.Float3, width, height, 0, outPixelStride, outPixelStride * width);
             OidnAPI.oidnSetFilter1b(filter, "hdr", true); // image is HDR
-            if (!inputScale.IsNaN()) OidnAPI.oidnSetFilter1f(filter, "inputScale", inputScale); // image is HDR
+            if (!inputScale.IsNaN()) OidnAPI.oidnSetFilter1f(filter, "inputScale", inputScale);
             OidnAPI.oidnCommitFilter(filter);
 
             // Filter the image
@@ -123,6 +123,49 @@ namespace Aardvark.OpenImageDenoise
             colorPtr.Free();
             if (albedo != null) albedoPtr.Free();
             if (normal != null) normalPtr.Free();
+            outputPtr.Free();
+
+            // Check for errors
+            if (OidnAPI.oidnGetDeviceError(m_device, out var errorMessage) != Error.None)
+                Report.Warn("Error: {0}", errorMessage);
+
+            // Cleanup
+            OidnAPI.oidnReleaseFilter(filter);
+        }
+
+        /// <summary>
+        /// Denoises the input image as lightmap to the output image buffer
+        /// inputScale: a value of 1 should a luminance(?) of 100cd/m² -> inputScale can be used to setup this (NaN for auto calculation)
+        /// </summary>
+        public void DenoiseLightmap(PixImage<float> color, PixImage<float> outImage, bool directional = false, float inputScale = float.NaN)
+        {
+            if (color.ChannelCount < 3 || color.ChannelCount > 4) throw new ArgumentException("Image must have 3 or 4 channels");
+            if (outImage.ChannelCount < 3 || outImage.ChannelCount > 4) throw new ArgumentException("Output image must have 3 or 4 channels");
+
+            var width = color.Size.X;
+            var height = color.Size.Y;
+
+            if (outImage.Size.X != width || outImage.Size.Y != height) throw new ArgumentException("Ouput image size does not match with input");
+
+            // Oidn only supports 3 channel images -> use pixelStride 
+            var pixelStride = color.ChannelCount * 4;
+            var outPixelStride = outImage.ChannelCount * 4;
+
+            var colorPtr = GCHandle.Alloc(color.Data, GCHandleType.Pinned);
+            var outputPtr = GCHandle.Alloc(outImage.Data, GCHandleType.Pinned);
+
+            // Create a denoising filter
+            var filter = OidnAPI.oidnNewFilter(m_device, "RTLightmap"); // optimized filter for HDR lightmaps
+            OidnAPI.oidnSetSharedFilterImage(filter, "color", colorPtr.AddrOfPinnedObject(), ImageFormat.Float3, width, height, 0, pixelStride, pixelStride * width);
+            OidnAPI.oidnSetSharedFilterImage(filter, "output", outputPtr.AddrOfPinnedObject(), ImageFormat.Float3, width, height, 0, outPixelStride, outPixelStride * width);
+            if (!inputScale.IsNaN()) OidnAPI.oidnSetFilter1f(filter, "inputScale", inputScale); // default=NaN
+            if (directional) OidnAPI.oidnSetFilter1b(filter, "directional", true); // default=false
+            OidnAPI.oidnCommitFilter(filter);
+
+            // Filter the image
+            OidnAPI.oidnExecuteFilter(filter);
+
+            colorPtr.Free();
             outputPtr.Free();
 
             // Check for errors

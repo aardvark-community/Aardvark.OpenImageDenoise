@@ -1,3 +1,7 @@
+### 0.2.1
+
+- added DenoiseLightmap
+
 ### 0.2.0
 
 - updated to Open Image Denoise 1.3.0
