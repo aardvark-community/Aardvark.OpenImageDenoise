@@ -2,6 +2,8 @@ type project
 id Aardvark.OpenImageDenoise
 authors Aardvark Community
 owners Aardvark Community
+projectUrl https://github.com/aardvark-community/Aardvark.OpenImageDenoise
+licenseUrl http://www.apache.org/licenses/LICENSE-2.0.txt
 repositoryType git
 repositoryUrl https://github.com/aardvark-community/Aardvark.OpenImageDenoise
 description
