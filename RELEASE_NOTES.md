@@ -1,3 +1,6 @@
+### 0.3.0
+- Update to Aardvark 5.2
+
 ### 0.2.1
 
 - added DenoiseLightmap
