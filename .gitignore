@@ -11,4 +11,5 @@ bin
 /build.fsx.lock
 .ionide
 /.vs
+src/.vs
 .vscode
