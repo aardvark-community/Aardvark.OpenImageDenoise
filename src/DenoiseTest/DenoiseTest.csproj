@@ -13,13 +13,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Aardvark.OpenImageDenoise\Aardvark.OpenImageDenoise.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\lib\Native\Aardvark.OpenImageDenoise\windows\AMD64\OpenImageDenoise.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\lib\Native\Aardvark.OpenImageDenoise\windows\AMD64\tbb12.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

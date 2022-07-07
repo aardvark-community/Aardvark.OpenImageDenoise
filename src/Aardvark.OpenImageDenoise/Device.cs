@@ -59,6 +59,7 @@ namespace Aardvark.OpenImageDenoise
         }
 
         /// <summary>
+        /// Denoises the input image (required to have 3 or 4 channels, only RGB are considered).
         /// Result will always be 3-channel float image
         /// inputScale: a value of 1 should represent 100cd/m² -> inputScale can be used to setup this (NaN for auto calculation)
         /// </summary>
@@ -70,7 +71,8 @@ namespace Aardvark.OpenImageDenoise
         }
 
         /// <summary>
-        /// Denoises the input image to the output image buffer
+        /// Denoises the input image to the output image buffer.
+        /// Input and output are required to have equal size and 3 or 4 channels (process will only consider RGB). 
         /// inputScale: a value of 1 should represent 100cd/m² -> inputScale can be used to setup this (NaN for auto calculation)
         /// </summary>
         public void Denoise(PixImage<float> img, PixImage<float> outImage, float inputScale = float.NaN)
@@ -79,7 +81,9 @@ namespace Aardvark.OpenImageDenoise
         }
 
         /// <summary>
-        /// Denoises the input image with optinal albedo and normal images to the output image buffer
+        /// Denoises the input image to the output image buffer.
+        /// Input and output are required to have equal size and 3 or 4 channels (process will only consider RGB). 
+        /// Optinal albedo and normal images can be used, otherwise set them to null.
         /// inputScale: a value of 1 should represent 100cd/m² -> inputScale can be used to setup this (NaN for auto calculation)
         /// </summary>
         public void Denoise(PixImage<float> color, PixImage<float> albedo, PixImage<float> normal, PixImage<float> outImage, float inputScale = float.NaN)
@@ -134,7 +138,8 @@ namespace Aardvark.OpenImageDenoise
         }
 
         /// <summary>
-        /// Denoises the input image as lightmap to the output image buffer
+        /// Denoises the input image as lightmap to the output image buffer.
+        /// Input and output are required to have equal size and 3 or 4 channels (process will only consider RGB). 
         /// inputScale: a value of 1 should a luminance(?) of 100cd/m² -> inputScale can be used to setup this (NaN for auto calculation)
         /// </summary>
         public void DenoiseLightmap(PixImage<float> color, PixImage<float> outImage, bool directional = false, float inputScale = float.NaN)
