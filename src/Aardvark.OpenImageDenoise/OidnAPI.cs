@@ -32,46 +32,46 @@ namespace Aardvark.OpenImageDenoise
 
     public class OidnAPI
     {
-        [DllImport("OpenImageDenoise.dll")]
+        [DllImport("OpenImageDenoise")]
         public static extern IntPtr oidnNewDevice(DeviceFlags flags);
 
-        [DllImport("OpenImageDenoise.dll", CharSet=CharSet.Ansi)]
+        [DllImport("OpenImageDenoise", CharSet=CharSet.Ansi)]
         public static extern void oidnSetDevice1i(IntPtr device, string name, int value);
 
-        [DllImport("OpenImageDenoise.dll", CharSet = CharSet.Ansi)]
+        [DllImport("OpenImageDenoise", CharSet = CharSet.Ansi)]
         public static extern int oidnGetDevice1i(IntPtr device, string name);
 
-        [DllImport("OpenImageDenoise.dll")]
+        [DllImport("OpenImageDenoise")]
         public static extern void oidnCommitDevice(IntPtr device);
 
-        [DllImport("OpenImageDenoise.dll", CharSet = CharSet.Ansi)]
+        [DllImport("OpenImageDenoise", CharSet = CharSet.Ansi)]
         public static extern IntPtr oidnNewFilter(IntPtr device, string type);
 
-        [DllImport("OpenImageDenoise.dll", CharSet = CharSet.Ansi)]
+        [DllImport("OpenImageDenoise", CharSet = CharSet.Ansi)]
         public static extern void oidnSetSharedFilterImage(IntPtr filter, string name, IntPtr data, ImageFormat fmt, int width, int height, int byteOffset, int pixelStride, int rowStride);
 
-        [DllImport("OpenImageDenoise.dll", CharSet = CharSet.Ansi)]
+        [DllImport("OpenImageDenoise", CharSet = CharSet.Ansi)]
         public static extern void oidnSetFilter1b(IntPtr filter, string name, bool value);
 
-        [DllImport("OpenImageDenoise.dll", CharSet = CharSet.Ansi)]
+        [DllImport("OpenImageDenoise", CharSet = CharSet.Ansi)]
         public static extern void oidnSetFilter1f(IntPtr filter, string name, float value);
 
-        [DllImport("OpenImageDenoise.dll", CharSet = CharSet.Ansi)]
+        [DllImport("OpenImageDenoise", CharSet = CharSet.Ansi)]
         public static extern void oidnSetFilter1i(IntPtr filter, string name, int value);
 
-        [DllImport("OpenImageDenoise.dll")]
+        [DllImport("OpenImageDenoise")]
         public static extern void oidnCommitFilter(IntPtr filter);
 
-        [DllImport("OpenImageDenoise.dll")]
+        [DllImport("OpenImageDenoise")]
         public static extern void oidnExecuteFilter(IntPtr filter);
 
-        [DllImport("OpenImageDenoise.dll")]
+        [DllImport("OpenImageDenoise")]
         public static extern Error oidnGetDeviceError(IntPtr device, out string outMessage);
         
-        [DllImport("OpenImageDenoise.dll")]
+        [DllImport("OpenImageDenoise")]
         public static extern void oidnReleaseFilter(IntPtr filter);
 
-        [DllImport("OpenImageDenoise.dll")]
+        [DllImport("OpenImageDenoise")]
         public static extern void oidnReleaseDevice(IntPtr device);
         
     }
