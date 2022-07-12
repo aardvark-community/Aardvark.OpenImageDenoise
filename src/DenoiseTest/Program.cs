@@ -56,7 +56,7 @@ namespace DenoiseTest
         static void Denoise(Device device, string file)
         {
             // load input texture
-            var img4Chan = (PixImage<float>)PixImage.Create(file);
+            var img4Chan = (PixImage<float>)PixImage.Load(file);
             // OIDN only supports RGB images -> 
             var img = img4Chan.ToPixImage<float>(Col.Format.RGB);
 
@@ -66,7 +66,7 @@ namespace DenoiseTest
 
             // save image with "_dn" postfix to same directory
             var outFile = Path.Combine(Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file) + "_dn.exr");
-            resultImg.SaveAsImage(outFile);
+            resultImg.Save(outFile);
         }
 
         static void Test()

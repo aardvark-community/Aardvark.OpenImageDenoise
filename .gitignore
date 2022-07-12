@@ -13,3 +13,4 @@ bin
 /.vs
 src/.vs
 .vscode
+**/.idea
