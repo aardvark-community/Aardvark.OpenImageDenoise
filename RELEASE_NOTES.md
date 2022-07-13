@@ -1,3 +1,6 @@
+### 0.3.1
+- Added Linux libraries and fixed DllImport path
+
 ### 0.3.0
 - Update to Aardvark 5.2
 
