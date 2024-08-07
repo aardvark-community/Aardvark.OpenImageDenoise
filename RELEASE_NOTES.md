@@ -1,3 +1,6 @@
+### 0.3.2
+- Updated to NET 8 and Aardvark.Base 5.3
+
 ### 0.3.2-prerelease0001
 - Updated to NET 8 and Aardvark.Base 5.3 (prerelease)
 
