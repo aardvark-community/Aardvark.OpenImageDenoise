@@ -1,9 +1,9 @@
 # Aardvark.OpenImageDenoise
 
-![Windows](https://github.com/aardvark-community/Aardvark.OpenImageDenoise/workflows/Publish/badge.svg)
-![Publish](https://github.com/aardvark-community/Aardvark.OpenImageDenoise/workflows/Publish/badge.svg)
-[![NuGet](https://badgen.net/nuget/v/Aardvark.OpenImageDenoise)](https://www.nuget.org/packages/Aardvark.OpenImageDenoise/)
-[![NuGet](https://badgen.net/nuget/dt/Aardvark.OpenImageDenoise)](https://www.nuget.org/packages/Aardvark.OpenImageDenoise/)
+[![Build](https://github.com/aardvark-community/Aardvark.OpenImageDenoise/actions/workflows/build.yml/badge.svg)](https://github.com/aardvark-community/Aardvark.OpenImageDenoise/actions/workflows/build.yml)
+[![Publish](https://github.com/aardvark-community/Aardvark.OpenImageDenoise/actions/workflows/publish.yml/badge.svg)](https://github.com/aardvark-community/Aardvark.OpenImageDenoise/actions/workflows/publish.yml)
+[![Nuget](https://img.shields.io/nuget/vpre/Aardvark.OpenImageDenoise)](https://www.nuget.org/packages/Aardvark.OpenImageDenoise/)
+[![Downloads](https://img.shields.io/nuget/dt/Aardvark.OpenImageDenoise)](https://www.nuget.org/packages/Aardvark.OpenImageDenoise/)
 
 Aardvark PixImage bindings for the Intel Open Image Denoise library (Version 1.3.0).
 
